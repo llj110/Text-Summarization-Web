@@ -1,5 +1,5 @@
 ## Dependencies
-
+The code of model is mainly based on the work: https://github.com/ucfnlp/control-over-copying.
 The code is written in Python (v3.7) and Pytorch (v1.3). We suggest the following environment:
 
 * A Linux machine (Ubuntu) with GPU
