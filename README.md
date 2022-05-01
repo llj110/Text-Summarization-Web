@@ -1,25 +1,3 @@
-# Controlling the Amount of Verbatim Copying in Abstractive Summarization
-
-We provide the source code for the paper **"[Controlling the Amount of Verbatim Copying in Abstractive Summarization](https://arxiv.org/pdf/1911.10390.pdf)"**, accepted at AAAI'20. If you find the code useful, please cite the following paper. 
-
-    @inproceedings{control-over-copying:2020,
-     Author = {Kaiqiang Song and Bingqing Wang and Zhe Feng and Liu Ren and Fei Liu},
-     Title = {Controlling the Amount of Verbatim Copying in Abstractive Summarization},
-     Booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-     Year = {2020}}
-
-## Goal
-
-* Our system seeks to re-write a lengthy sentence, often the 1st sentence of a news article, to a concise, title-like summary. The average input and output lengths are 31 words and 8 words, respectively. 
-
-* The code takes as input a text file with one sentence per line. It generates a text file ("summary.txt") in the working folder as the outputs, where each source sentence is replaced by a title-like summary.
-
-* Example input and output are shown below. 
-  > Belgian authorities are investigating the killing of two policewomen and a passerby in the eastern city of Liege on Tuesday as a terror attack, the country's prosecutor said.
-
-  > Belgium probes killing of two policewomen as terror attack . 
-
-
 ## Dependencies
 
 The code is written in Python (v3.7) and Pytorch (v1.3). We suggest the following environment:
@@ -83,25 +61,3 @@ $ pip install pyrouge
     $ python run.py --do_train --train_prefix data/train --valid_prefix data/valid
     ```
 
-2. (Optional) Modify the training options.
-    
-    You might want to change the parameters used for training. These are specified in `./setttings/training/gigaword_8.json` and explained blow.
-    
-```
-{
-	"stopConditions":
-	{
-		"max_epoch":12,
-		"earlyStopping":false,
-		"rateReduce_bound":200000
-	},
-	"checkingPoints":
-	{
-		"checkMin":0,
-		"checkFreq":2000,
-		"everyEpoch":true
-	}
-}
-```
-
-HINT*: 200K batches (used for `rateReduce_bound`) with batch size of `8`, is slightly less than half of an epoch.
